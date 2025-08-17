@@ -7,6 +7,8 @@ string PASS="123";
 int maxAttempts=5;
 int failedAttempts=0;
 
+void loginAttempts();
+
 void login()
 {
     cout<<"\nLogin\n";
@@ -24,7 +26,8 @@ void login()
     }
     else
     {
-        failedAttempts++;
+        cout<<"\nNot an authorised account\n";
+        ++failedAttempts;
         cout<<"\nTry again\n";
         loginAttempts();
     }
@@ -38,12 +41,15 @@ void lockAccount()
 
 void loginAttempts()
 {
-    if(failedAttempts>maxAttempts)
+    cout<<"\nHas completed 5 failed attempts?\n";
+    if(failedAttempts>=maxAttempts)
     {
+        cout<<"\nYes, completed 5 failed attempts\n";
         lockAccount();
     }
     else
     {
+        cout<<"\nNo,still " <<maxAttempts-failedAttempts<<" attempts left, continue to login in\n";
         login();
     }
 }
